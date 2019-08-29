@@ -1,0 +1,35 @@
+
+$courses = [
+	['name' => '']
+	['name' => '']
+	['name' => '']
+	['name' => '']
+	['name' => '']
+	['name' => '']
+	['name' => '']
+	['name' => '']
+];
+
+100
+
+25 * 4
+
+$data = [];
+for($i = 0; $i < (100 / 4); $i = $i + 4) {
+	$data[] = array_slice($courses, $i, $i + 4);
+}
+
+// chunks
+$courses = [
+	[
+		['name' => '']
+		['name' => '']
+		['name' => '']
+		['name' => '']
+	], [
+		['name' => '']
+		['name' => '']
+		['name' => '']
+		['name' => '']
+	]
+];

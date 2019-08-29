@@ -1,0 +1,34 @@
+
+'hello' + 15 // PHP 0 + 15
+'hello' + 15 // JS hello15
+
+
+SELECT COUNT(*)FROM users
+SELECT AVG(id)FROM users
+SELECT SUM(id)FROM users
+SELECT DISTINCT(role_id) FROM users
+
+SELECT * FROM users ORDER BY created_at ASC;
+SELECT * FROM users ORDER BY created_at DESC;
+
+SELECT MIN(id) FROM users
+SELECT MAX(id) FROM users
+
+1, 2
+SELECT * FROM users WHERE id IN(1, 2, 25, 50);
+
+PHP
+
+SELECT * FROM courses WHERE name = 'PHP';
+SELECT * FROM courses WHERE name like '%PHP'
+SELECT * FROM courses WHERE name like 'PHP%'
+SELECT * FROM courses WHERE name like '%description%' OR title LIKE '%description%' OR description LIKE '%description%';
+
+SELECT * FROM courses WHERE requirements IS NULL;
+SELECT * FROM courses WHERE requirements IS NOT NULL;
+
+UPDATE courses SET name = 'WEB WEB' WHERE id = 1;
+DELETE FROM courses WHERE id = 1;
+
+SELECT * FROM courses WHERE price BETWEEN 500 AND 1500;
+

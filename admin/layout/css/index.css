@@ -1,0 +1,278 @@
+/* Start Globlo */
+	
+@font-face {
+font-family: Go;
+src: url(../webfonts/GothamLight-Regular.otf);
+}
+body {
+ font-family: Go;
+background-color:#EFEFEF
+}
+
+/* End Globl */
+
+
+
+/*========================== " Start adminbored Style " ============================*/
+.navbar{
+	padding:0 30px;
+	background-color:#FFF;
+
+}
+.navbar .navbar-brand img.logo {
+	width:150px;
+    margin-bottom: 20px;
+}
+.adminheader {
+
+	box-shadow: 2px 2px 3px #aaaaaa33;
+    position: relative;
+    z-index: 100;
+
+}
+
+.adminheader button.changmode {
+	background:none;
+	border:none;
+	width:40px;
+	cursor: pointer;
+	outline: none;
+	margin-left: 40px;
+}
+.adminheader button.changmode span {
+	display:inline-block;
+	background-color:black;
+	width:100%;
+	height:2px;
+	margin-bottom:6px;
+
+	
+}
+.adminheader .menu {
+	float:right;
+	width:20%;
+	cursor: pointer;
+}
+.adminheader .menu img {
+	width:60px;
+	border:5px solid #aaaaaa33;
+	border-radius: 50%;
+	padding:2px;
+	margin-left:62%;
+	
+}
+/* Start Left-Side*/
+.left-side{
+    width:5%;
+    height:600px;
+    background-color:#FFF;
+    position: relative;
+    z-index: 99;
+   float:left;
+   transition: all .5s ease-in-out
+}
+@media (max-width: 575.98px) {
+	.left-side{
+        width: 100%;
+        height: 80px;
+        margin-bottom: 20px;
+	}
+}
+@media (min-width: 576px) and (max-width: 991.98px) { 
+	.left-side{
+        width:15%;
+     
+	}
+}
+
+t.tools{
+	width:100%;
+	height:650px;
+}
+ .tools .tool {
+	color: #909399;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 10.5px;
+    transition: 2s ease;
+	
+	
+}
+ .tools .tool a {
+    color:#909399;
+}
+ .tools .tool a:hover {
+    color:black;
+}
+
+@media (max-width:575.98px){
+	.tools .tool{
+	width: 20%;
+    float: left;
+    margin-left:0;
+    padding:0
+	}
+}
+@media (min-width: 576px) and (max-width: 991.98px) { 
+	.tools .tool{
+
+    padding:0 20px
+	}
+}
+.tools .tool span::after{
+	position: absolute;
+	bottom: 50%;
+    right: 10%;
+	display: inline-block;
+    margin-left: 5px;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #000;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0;
+    border-left: none;
+    transform: rotate(135deg);
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+
+}
+.tools .tool:hover span::after{
+	-webkit-transform: rotate(317deg);
+	-moz-transform: rotate(317deg);
+	-o-transform: rotate(317deg);
+	transform: rotate(317deg);
+}
+@media(max-width:575.98px){
+	.tools .tool span {
+		display: none;
+	}
+}
+.tools .tool:hover > i,span{
+	color:black;
+	cursor: pointer
+}
+.tools .tool span {
+    display: none;
+}
+.active .tools .tool span {
+    display:inline;
+}
+
+
+.tools .tool i {
+	margin-right:10px;
+	font-size:20px;
+}
+.tools .tool span {
+	font-size:14px;
+}
+/* End Left-Side */
+
+
+.right-side {
+    width:84%;
+    
+    background-color:#FFF;
+    position: relative;
+    z-index: 20;
+    float:left;
+    margin-left:1%;
+    transition: all .5s ease-in-out
+}
+ .active {
+    width:15%;
+  
+}
+.full-width {
+    width:93%;
+    
+
+}
+@media  (max-width: 575.98px){
+    .full-width {
+        width: 100%;
+        margin-left:0;
+
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) { 
+	 .full-width {
+        width:84%;
+    }
+}
+
+/* Start Login Page */
+.form .group {
+    margin:200px auto;
+    background-color:#FFF;
+    padding:30px;
+    border-radius:10px;
+    position: relative;
+    overflow: hidden ;
+    -webkit-box-shadow: 1px 1px 5px #CCC;
+    -moz-box-shadow: 1px 1px 5px #CCC;
+    -o-box-shadow: 1px 1px 5px #CCC;
+    box-shadow: 1px 1px 5px #CCC;
+}
+.form .group::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: -27px;
+    height: 5px;
+    width: 120px;
+    background-color: #87cbec;
+    transform: rotate(-40deg);
+}
+.form .group::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    right: -27px;
+    height: 5px;
+    width: 120px;
+    background-color: #87cbec;
+    -webkit-transform: rotate(-140deg);
+    -moz-transform: rotate(-140deg);
+    -o-transform: rotate(-140deg);
+    transform: rotate(-140deg);
+}
+.form .group h3 {
+    font-weight: bold;
+}
+.form .group img {
+
+}
+.form .group input{
+    width:70%;
+    padding:0 30px;
+    margin:10px auto;
+   
+}
+.form .group .form-group {
+    position: relative; 
+}
+.form .group i {
+   position: absolute;
+    top: 27%;
+    left: 17%;
+}
+.form .group  button {
+   margin-left: 15%;
+}
+/* End Login Page */
+
+
+/* Start Show Roles Page*/
+.right-side .roles h1.title {
+    font-weight: bold;
+}
+
+
+/* End Show Roles Page*/

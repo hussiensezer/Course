@@ -1,0 +1,37 @@
+
+// Syntax PHP | JS
+// OOP
+// Database Connection
+// Middleware | roles
+// Authentication
+// Session
+// Git
+// Task Management
+// Laravel, Yii
+// API
+// Lamp Stack
+// Relational Database
+// CMS
+// JSON / XML
+// HTML, CSS, CSS3, Bootstrap, JavaScript, jQuery, Vue / Angular / React, LESS, SASS, SCSS
+// MVC: .htaccess
+// Pug, Blade
+// Charts: ChartsJs, HighCharts, Google Charts, D3
+
+
+<?php
+
+foreach($users as $key => $user) {
+?>
+<div><?php echo $user['first_name']; ?></div>
+
+<?php } ?>
+
+
+@foreach($users as $key => $user)
+<div>{{ $user['first_name'] }}</div>
+@endforeach
+
+v-for="user in users"
+
+{{ user.name }}

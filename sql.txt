@@ -1,0 +1,165 @@
+
+DROP DATABASE IF EXISTS courses_hub;
+CREATE DATABASE courses_hub;
+
+USE courses_hub;
+
+SET SQL_MODE='ALLOW_INVALID_DATES';
+
+# DATE 2019-08-24
+# DATETIME 2019-08-24 21:50:12
+# TIMESTAMP 2019-08-24 21:50:12
+# SELECT users.id AS user_id, users.first_name, users.email, users.role_id, roles.name AS role_name FROM `users` LEFT JOIN roles ON roles.id = users.role_id;
+
+# SELECT courses.*, categories.name AS category_name FROM courses LEFT JOIN categories ON categories.id = courses.cateogry_id;
+
+# sub query
+
+CREATE TABLE roles (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	active INT(1) DEFAULT 1,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO roles (name) VALUES('Admin'), ('Student'), ('Instructor');
+
+CREATE TABLE users (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	role_id INT(2) UNSIGNED NOT NULL,
+	active INT(1) DEFAULT 1,
+	phone VARCHAR(20),
+	country VARCHAR(100),
+	gender VARCHAR(6) DEFAULT 'female',
+	age DATE,
+	avatar VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	FOREIGN KEY (role_id) REFERENCES roles (id)
+);
+
+INSERT INTO users (first_name, last_name, email, password, role_id, avatar) VALUES('Sarah', 'Tarek', 'sarah@gmail.com', 123456, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnj79hGArvvKgp5nkDA1KaH8aH6KB5urIb70PuhQMvM4CUS2kK'), ('Yara', 'Hossam', 'yara@gmail.com', 123456, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnj79hGArvvKgp5nkDA1KaH8aH6KB5urIb70PuhQMvM4CUS2kK'), ('Hossam', 'Kamal', 'hossam@gmail.com', 123456, 3, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnj79hGArvvKgp5nkDA1KaH8aH6KB5urIb70PuhQMvM4CUS2kK');
+
+# UPDATE users SET avatar = null WHERE id = 2;
+
+CREATE TABLE categories (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(255),
+	active INT(1) DEFAULT 1,
+	user_id INT UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	FOREIGN KEY (user_id) REFERENCES users (id)
+);
+INSERT INTO categories (name, user_id) VALUES('Web Development', 1), ('Bussiness', 1), ('Financial', 2);
+
+CREATE TABLE courses (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	title VARCHAR(255) NOT NULL,
+	description TEXT NOT NULL,
+	requirements TEXT,
+	avatar VARCHAR(255) NOT NULL,
+	price DECIMAL NOT NULL,
+	duration DECIMAL NOT NULL,
+	discount DECIMAL,
+	active INT(1) DEFAULT 1,
+	discount_type VARCHAR(7),
+	cateogry_id INT UNSIGNED NOT NULL,
+	instructor_id INT UNSIGNED NOT NULL,
+	user_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (cateogry_id) REFERENCES categories (id),
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	FOREIGN KEY (instructor_id) REFERENCES users (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+INSERT INTO courses(name, title, description, avatar, price, duration, cateogry_id, user_id, instructor_id) VALUES('Web development master diploma', 'Web development master diploma title', 'Web development master diploma description', 'https://i.udemycdn.com/course/750x422/148902_af91_14.jpg', 2000, 150, 1, 1, 3), ('web PHP', 'Web PHP title', 'Web  PHP description', 'https://vignette.wikia.nocookie.net/olympus-academy-roleplay/images/3/30/Mage.jpg/revision/latest', 1200, 120, 1, 1, 3);
+
+CREATE TABLE course_groups (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	start_date TIMESTAMP NOT NULL,
+	end_date TIMESTAMP NOT NULL,
+	active INT(1) DEFAULT 1,
+	session_count INT(3) NOT NULL,
+	max_students INT(3) NOT NULL,
+	course_id INT UNSIGNED NOT NULL,
+	user_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	FOREIGN KEY (course_id) REFERENCES courses (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO course_groups(name, start_date, end_date, session_count, max_students, course_id, user_id) VALUES('Master Diploma 21', '2019-01-24 18:00:00', '2020-05-28 22:00:00', 70, 20, 1, 1), ('Master Diploma 22', '2019-03-15 18:00:00', '2019-08-22 22:00:00', 60, 25, 1, 1);
+
+CREATE TABLE course_group_students (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	group_id INT UNSIGNED NOT NULL,
+	student_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (group_id) REFERENCES course_groups (id),
+	FOREIGN KEY (student_id) REFERENCES users (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE reviews (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	review TEXT NOT NULL,
+	user_id INT UNSIGNED NOT NULL,
+	course_id INT UNSIGNED NOT NULL,
+	rate INT(1) UNSIGNED NOT NULL,
+	active INT(1) DEFAULT 0,
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	FOREIGN KEY (course_id) REFERENCES courses (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE bookmarks (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	user_id INT UNSIGNED NOT NULL,
+	course_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	FOREIGN KEY (course_id) REFERENCES courses (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE testimonials (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	testimonial TEXT NOT NULL,
+	avatar VARCHAR(255) NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	position VARCHAR(50) NOT NULL,
+	active INT(1) DEFAULT 1,
+	user_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE partners (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	avatar VARCHAR(255) NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	active INT(1) DEFAULT 1,
+	user_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (id),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE subscribers (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

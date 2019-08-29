@@ -1,0 +1,21 @@
+Admin can create role // Salma
+Admin can create user // Hussin
+Admin can create subscriber // Khaled
+Admin can create category // Rasha
+Admin can create course // Ibrahim
+Admin can create testimonial // Rehan
+Admin can create partner // Andrew
+
+Admin can view roles // Salma
+Admin can view users// Hussin
+Admin can view subscribers // Khaled
+Admin can view categories // Rasha
+Admin can view courses // Ibrahim
+Admin can view testimonials // Rehan
+Admin can view partners // Andrew
+
+
+- Check the database table
+- Create proper form
+- Process the submitted form and show alerts
+- Create a table to view all the data ( paginated / every has an edit button )
