@@ -1,5 +1,5 @@
 <?php
-require 'kernel.php';
+require 'includes/kernel.php';
 $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 ?>
 

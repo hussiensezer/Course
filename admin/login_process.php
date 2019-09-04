@@ -18,12 +18,18 @@ if(!empty($errors)) {
 }else {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $sql = "SELECT * FROM  users WHERE email = '{$email}' AND password = {$pass}  AND role_id = 1 LIMIT 1";
+    $sql = "SELECT * FROM  users WHERE email = '{$email}' AND password = {$pass} LIMIT 1";
     $user =  select_row($sql);
     
+    
     if(!empty($user)) {
-        $_SESSION['user'] = $user;
+       if($user['role_id'] == 1) {
+            $_SESSION['user'] = $user;
         redirect('adminboard.php');
+       }else {
+           $_SESSION['normalUser'] = $user;
+           redirect("../index.php");
+       }
     }else {
         $_SESSION['error'] = "Your <b>Password</b> is Wrong Or You Don't Have The <b>Access</b> To Login";
         redirect('login.php');

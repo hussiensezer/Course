@@ -28,14 +28,20 @@ function getTitle() {
 
 */
 function checkguest() {
-    
+    global $back;
     if(isset($_SESSION['user'])){
         
         
     }else {
-          redirect('login.php');  
+        if(isset($back)){
+            redirect('../login.php');  
+
+        }else {
+            redirect('login.php');  
         }
+          
     }
+  }
 
 
 
@@ -95,9 +101,27 @@ function view_alerts() {
 	}
 }
 
-function redirect($file) {
-	header("Location: {$file}");
-	exit();
+
+/*
+** Function To Redirect Where everYou Need V.2
+*/
+function redirect($path = NULL) {
+    
+	   if($path == NULL) {
+      $path = 'adminboard.php';
+        
+    }elseif($path == 'back') {
+        if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
+            $path = $_SERVER['HTTP_REFERER'];
+        }else {
+            $path = 'adminboard.php';
+        }
+        
+    }else {
+        $path = $path;
+    }
+   header("refresh:0; url=$path");
+    exit();
 }
 
 
@@ -175,6 +199,36 @@ function middleware_student() {
 	}
 }
 
+/*
+** Function The Update The Active Status To [Active Or Deactive] v.1;
+
+*/
+
+function updateActive($table,$date,$id,$path = 'back') {
+    $sql = "UPDATE {$table} SET active = {$date} WHERE id = {$id}";
+    $update = query($sql);
+    if($date == 1) {
+        $status = 'Active';
+    }else {
+        $status = 'Deactive';
+    }
+    $_SESSION['success'] = "Congratulation This Row Are <b> {$status}</b>";
+   redirect('back');
+   
+ 
+}
+
+
+function deleteRow($table,$id,$path){
+    
+    $sql = "DELETE FROM {$table} WHERE id = {$id}";
+    $delete = query($sql);
+    $_SESSION['success'] = "Congratualtion This Row Are Deleted";
+    redirect($path);
+}
+
+
+
 // validator
 // redirect
 // select_rows
@@ -183,3 +237,6 @@ function middleware_student() {
 // middleware_auth
 // middleware_admin
 // middleware_student
+
+
+

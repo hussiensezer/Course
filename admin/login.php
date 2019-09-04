@@ -18,7 +18,7 @@ include "init.php";
                   <?php
                         view_alerts();
                     ?>
-                <form action="login_admin_process.php" method="POST">
+                <form action="login_process.php" method="POST">
                     <div class="form-group">
                         <input type="email" class='form-control' name="email" placeholder="Enter Your Email" autocomplete="off" autofocus>
                         <i class="fas fa-envelope"></i>

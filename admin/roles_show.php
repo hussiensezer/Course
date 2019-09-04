@@ -16,6 +16,10 @@ $roles = select_rows($sql);
             <div class="roles col-md-12">
                 <h1 class="text-center mt-5 mb-5 title">Show Roles</h1>
                 <div class="table-responsive">
+                    <a href="role_create.php" class="btn btn-success mb-3 btn-sm"> <i class='fas fa-plus mr-1'></i>Create Role</a>
+                    <?php 
+                        view_alerts();
+                    ?>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -38,18 +42,18 @@ $roles = select_rows($sql);
                                     <td> 
                                         <?php 
                                             if($role['active'] == 1) {
-                                                echo "<a href='active_role.php?id={$role['id']}'><i class='fas fa-check-circle text-success'></i></a>";
+                                                echo "<a href='_role/role_active_process.php?id={$role['id']}'><i class='fas fa-check-circle text-success'></i></a>";
                                             }else {
                                                 
-                                                echo "<a href='active_role.php?id={$role['id']}'><i class='fas fa-check-circle text-muted'></i></a>";
+                                                echo "<a href='_role/role_active_process.php?id={$role['id']}'><i class='fas fa-check-circle text-muted'></i></a>";
                                             }
                                         ?>
                                     </td>
                                     <td> <?php echo $role['created_at']?></td>
                                     <td> <?php echo $role['updated_at']?></td>
                                     <td>
-                                        <a href="delete_role.php?id=<?php echo $role['id']?>"><i class="fas fa-times text-danger fa-fw mr-1"></i></a>
-                                        <a href="edit_role.php?id=<?php echo $role['id']?>"><i class="fas fa-edit text-primary fa-fw ml-1"></i></a>
+                                        <a href="_role/role_delete_process.php?id=<?php echo $role['id']?>"class='confirmed'><i class="fas fa-times text-danger fa-fw mr-1"></i></a>
+                                        <a href="role_edit.php?id=<?php echo $role['id']?>"><i class="fas fa-edit text-primary fa-fw ml-1"></i></a>
                                     </td>
                                 </tr>
 
@@ -66,25 +70,6 @@ $roles = select_rows($sql);
     </div>
     
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php 
 

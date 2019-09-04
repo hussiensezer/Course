@@ -8,7 +8,7 @@ include "includes/functions/kernel.php";
     $css = 'layout/css/';
     $js = 'layout/js/';
     $img = 'layout/images/';
-	//$js = 'layout/js/'; //JS Directory
+	
 
 
 

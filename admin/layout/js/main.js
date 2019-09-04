@@ -11,9 +11,46 @@ $(function(){
     
     'use strict';
     
-    $('#button').click(function(){
-        $('.left-side').toggleClass('active');
-        $('.right-side').toggleClass('full-width');
+    $('#door').mouseover(function(){
+        $('.left-side').addClass('active');
+        $('.right-side').removeClass('full-width');
+    });
+      $('#door').mouseleave(function(){
+        $('.left-side').removeClass('active');
+            $('.right-side').addClass('full-width');
+    });
+    
+    
+
+ /*       var Hide = $('.hide');
+          $('.hover').mouseover(function(){
+              Hide.fadeIn(200);
+              
+          });   
+    
+        $('.hover').mouseleave(function(){
+            Hide.fadeOut(200);
+          }); */ 
+
+$('.hover').hover(function(){
+   $(this).find('.hide').fadeIn(200);
+},function () {
+     $(this).find('.hide').fadeOut(200);
+    });
+
+    
+    
+    
+    
+    
+    
+    
+    $('.confirmed').click(function(){
+        
+        return confirm('Are You Sure To Delete ');
     })
     
 });
+
+	
+

@@ -171,12 +171,25 @@ t.tools{
 .tools .tool span {
 	font-size:14px;
 }
+
+.tools .tool .hide {
+    display: none;
+}
+.tools .tool .sub-ul {
+    padding-left:0;
+}
+.tools .tool .sub-ul li {
+    list-style: none;
+    margin:10px 0 10px 30px;
+    font-size: 13px;
+    font-weight: bold;
+}
 /* End Left-Side */
 
 
 .right-side {
     width:84%;
-    
+    min-height:600px;
     background-color:#FFF;
     position: relative;
     z-index: 20;
@@ -270,9 +283,17 @@ t.tools{
 
 
 /* Start Show Roles Page*/
-.right-side .roles h1.title {
+.right-side  h1.title {
     font-weight: bold;
 }
 
 
 /* End Show Roles Page*/
+
+/* Start Edit Roles Page*/
+.right-side .form-container {
+    margin:0 auto;
+}
+
+
+/* End Edit Roles Page*/
