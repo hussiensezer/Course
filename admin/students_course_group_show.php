@@ -6,6 +6,8 @@ checkguest();
 $id = $_GET['id'];
 $sql = " SELECT course_group_students.*, course_groups.name, users.first_name, users.last_name FROM course_group_students INNER JOIN course_groups ON group_id = course_groups.id INNER JOIN users ON student_id = users.id WHERE group_id = {$id} ";
 $students = select_rows($sql);
+$studentCount = "SELECT COUNT(id) AS count FROM course_group_students  WHERE group_id = {$id}";
+$count = select_row($studentCount);
 
 ?>
 
@@ -21,13 +23,26 @@ $students = select_rows($sql);
  <div class="container">
         <div class="row">
             <div class="roles col-md-12">
-                <h1 class="text-center mt-5 mb-5 title"><?php echo $_GET['name']?> Student</h1>
+                <h1 class="text-center mt-5 mb-5 title"> Group Student</h1>
+
                 <div class="table-responsive">
-                    <a href="group_course_create.php" class="btn btn-success mb-3 btn-sm"> <i class='fas fa-plus mr-1'></i>Join Student</a>
+                                        <?php
+                        echo "<p class='text-center mb-0'>";
+                            echo "({$count['count']}" . " / " . "{$_GET['count']})";
+                        echo "</p>";
+                    if($_GET['count']  <= $count['count']) {
+                              echo "<button class='btn btn-danger btn-sm mb-3'>Full Member</button>";
+                            }else {
+                               
+                          
+                    ?>
+                    <a href="student_course_group_create.php?id=<?php echo $id ;?>" class="btn btn-success mb-3 btn-sm"> <i class='fas fa-plus mr-1'></i>Join Student</a>
+                
                     <?php 
+                          }
                         view_alerts();
                     ?>
-                </div>
+           
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -68,6 +83,7 @@ $students = select_rows($sql);
                     </tbody>
                 
                 </table>
+             </div>
             </div>
         </div>
     </div>

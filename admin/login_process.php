@@ -14,24 +14,31 @@ $errors = validator($_POST,[
 if(!empty($errors)) {
     
     $_SESSION['errors'] = $errors;
-    redirect('login.php');
+   redirect('login.php');
 }else {
     $email = $_POST['email'];
     $pass = $_POST['pass'];
-    $sql = "SELECT * FROM  users WHERE email = '{$email}' AND password = {$pass} LIMIT 1";
+    $sql = "SELECT * FROM  users WHERE email = '{$email}' AND role_id = 1 LIMIT 1";
     $user =  select_row($sql);
     
-    
-    if(!empty($user)) {
-       if($user['role_id'] == 1) {
-            $_SESSION['user'] = $user;
+    if(!empty($user)){
+    if(password_verify($pass, $user['password'])) {
+        $_SESSION['success'] = "Congratulation Login Success";
+        $_SESSION['user'] = $user;
         redirect('adminboard.php');
-       }else {
-           $_SESSION['normalUser'] = $user;
-           redirect("../index.php");
-       }
     }else {
-        $_SESSION['error'] = "Your <b>Password</b> is Wrong Or You Don't Have The <b>Access</b> To Login";
+        $_SESSION['error'] = "Wrong Password Please Try Again";
+        redirect('login.php');  
+    }
+    }else {
+        $_SESSION['error'] = "Wrong Email Sorry You don't Have The Access To Join Here";
         redirect('login.php');
+        
     }
 }
+    
+
+    
+    
+    
+ 

@@ -44,7 +44,16 @@ function checkguest() {
   }
 
 
+/*
+** Function To Count The Total 
+*/
 
+function total($table, $where = NULL) {
+    
+    $sql = "SELECT COUNT(id) AS count FROM {$table}  {$where}";
+    $total = select_row($sql);
+    return $total['count'];
+}
 
 
 

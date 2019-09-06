@@ -25,7 +25,7 @@ $groups = select_rows($sql);
                     <?php 
                         view_alerts();
                     ?>
-                </div>
+               
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -48,7 +48,7 @@ $groups = select_rows($sql);
                             <tr>
                                 <td><?php echo $no + 1 ;?></td>
                                 <td> 
-                            <a href="students_course_group_show.php?id=<?php echo $group['id'] . "&name=" . $group['course_name']?>"> 
+                            <a href="students_course_group_show.php?id=<?php echo $group['id'] . "&count=" . $group['max_students']?>"> 
                                         <?php echo $group['name'] ;?>
                                     </a>
                                 </td>
@@ -85,6 +85,7 @@ $groups = select_rows($sql);
                     </tbody>
                 
                 </table>
+             </div>
             </div>
         </div>
     </div>

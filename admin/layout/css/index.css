@@ -297,3 +297,36 @@ t.tools{
 
 
 /* End Edit Roles Page*/
+
+/* Start AdminBoard Page */
+.adminboard .card {
+    position:relative;
+    z-index: 1
+}
+.adminboard .card .upper{
+    background-color: #2C5E55;
+    position: absolute;
+    width: 20%;
+    color: white;
+    text-align: center;
+    z-index: 2;
+    top: -10%;
+    left: 7%;
+    padding: 20px;
+}
+.adminboard .card  .cate {
+    background-color:#88303D;
+}
+.adminboard .card .data {
+    margin-top: 8%;
+}
+.adminboard .card .data h4 {
+    font-weight: bold;
+}
+.adminboard .card .data h5 {
+    
+    margin-right: 10px;
+    margin-top: 10px;
+  
+}
+/* End AdminBoard Page */

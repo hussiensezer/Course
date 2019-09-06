@@ -1,7 +1,7 @@
 <!-- Start Nav-Bar -->
 <nav class="navbar navbar-expand-lg navbar-light adminheader">
 	
-  <a class="navbar-brand" href="#"><img class="logo "src="layout/images/logo.png" alt="Logo"/></a>
+  <a class="navbar-brand" href="adminboard.php"><img class="logo "src="layout/images/logo.png" alt="Logo"/></a>
  
  	<button class="changmode d-none d-md-block" id="button">
 			<span></span>
