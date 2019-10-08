@@ -10,7 +10,7 @@
 	</button>
 	<div class="menu ml-auto">
 	  <ul class="navbar-nav mr-auto">
-                 <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php echo $name = isset($_SESSION['user']['first_name']) ? $_SESSION['user']['first_name']  : '' ;?>
         </a>
@@ -20,9 +20,9 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
-      </li>
+       </li>
             
-    </ul>
+      </ul>
 	</div>
 </nav>
 <!-- End Nav-Bar -->

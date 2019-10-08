@@ -1,85 +1,23 @@
-<?php
-require 'includes/kernel.php';
-$courses = select_rows("SELECT * FROM courses WHERE active = 1");
+
+<?php 
+require_once 'init.php';
+
+$testi =  select_rows('SELECT * FROM testimonials WHERE active = 1');
+
+/*$i = 1;
+for($i ; $i  <= 100; $i++) {
+
+echo $sql =  "INSERT INTO testimonials (testimonial,name,position,avatar,active,user_id) VALUES ('test{$i}', 'name{$i}','postion{$i}','avatar.png', 1, 1);" . "<br>";
+}*/
+
+$total = total('testimonials');
+$data = [];
+$size = ceil($total / 4);
+
+$chunked_testi = array_chunk($testi, 2, true);
+
+
 ?>
-
-<!DOCTYP html>
-<html lang="en" dir="ltr"> 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title> Courses HUB</title>
-	<!-- FontAwesome-->
-	<link rel="stylesheet" href="assets/css/fontawesome.min.css">
-	<!-- BootStrap-->
-	<link rel="stylesheet" href="assets/css/uikit.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<!-- Main Style-->
-	<link rel="stylesheet" href="assets/css/index.css">
-
-</head>
-<body>
-
-<!-- Start Nav-Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-	
-  <a class="navbar-brand" href="#"><img class="logo "src="assets/images/logo.png" alt="Logo"/></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown active">
-		  
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<i class="fas fa-braille fa-lg mr-1"></i>
-          Catagories
-		
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Business</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Design</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Photography</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Lifestyle</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Health & Fitness</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Music</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Development</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Marketing</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Office Produtivity</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>It & Software</a>
-		  <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Personal Development</a>
-		  <a class="dropdown-item" href="#"><i class="fas fa-palette mr-2 fa-lg"></i>Teaching & Academics</a>
-        </div>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="#">Courses </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">On Site Trainings</a>
-      </li>  
-		<li class="nav-item">
-        <a class="nav-link" href="#">Training Centers</a>
-      </li>
-     
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="What do you want to learn" aria-label="Search">
-		<i class="fas fa-search"></i>
-      
-    </form>
-	 <ul class="navbar-nav ml-auto mt-0">
-		 <li class="nav-item">
-		 	<a href="#" class="nav-link">Login</a>
-		 </li>
-		 <li class="nav-item">
-		 	<a href="#" class="nav-link">Sign Up</a>
-		 </li>
-	 	 
-	 </ul>
-  </div>
-</nav>
-<!-- End Nav-Bar -->
 
 <!-- Start Header-wrapper -->
 <header>
@@ -146,9 +84,7 @@ $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 			  <div class="carousel-inner">
 				  <!-- Start Carousel Item -->
-				<?php
-				foreach ($courses as $key => $course) {
-				?>
+			
 				<div class="carousel-item active">
 					<div class="row">
 						<!-- Start Card -->
@@ -258,7 +194,7 @@ $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 					</div>
 
 				</div>
-				<?php } ?>
+			
 						
 					</div>
 					  </div>
@@ -644,79 +580,86 @@ $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 					  <!-- Start Carousel-Item -->
 					<div class="carousel-item active " data-interval="10000">
 						<div class="row">
+                        
 							<!-- Start  Word -->
 							<div class="client col-md-5">
 								<div class="conatiner-img">
 
-								<img src="assets/images/avater.jpg">
+								<img src="layout/images/avater.jpg">
 
 								</div>
 								<div class="client-info">
-								<p class="client-name"><b>William Smith</b><span> / CEO at CGB</span></p>
+								<p class="client-name"><b>Hussien Attia</b><span> / CEO at CGB</span></p>
 								<p class="client-word">
 									<b>CoursesHub</b> is a life saver. I don't have the time or money for a college education. My goal is to become a freelance web developer, and thanks to Courses HUB, I'm really close	
 								</p>
 								</div>
 							</div>
 							<!-- End  Word -->
-							
-							<!-- Start  Word -->
-							<div class="client col-md-5">
+                            <div class="client col-md-5">
 								<div class="conatiner-img">
 
-								<img src="assets/images/avater.jpg">
+								<img src="layout/images/avater.jpg">
 
 								</div>
 								<div class="client-info">
-								<p class="client-name"><b>Sara Foaud</b><span> / Markter at Betslayer</span></p>
+								<p class="client-name"><b>Sezer X</b><span> / CEO at CGB</span></p>
 								<p class="client-word">
 									<b>CoursesHub</b> is a life saver. I don't have the time or money for a college education. My goal is to become a freelance web developer, and thanks to Courses HUB, I'm really close	
 								</p>
 								</div>
 							</div>
 							<!-- End  Word -->
+						
+					
 						</div>
 					</div>
+          
+					<!-- End Carousel-Item -->
+                      
+                      	  <!-- Start Carousel-Item -->
+
+                    <?php 
+                        foreach($chunked_testi  as $testi) {
+
+                       
+                    ?>
+					<div class="carousel-item  " data-interval="10000">
+						<div class="row">
+                            <?php 
+                                foreach($testi as $value) {
+                                    
+                            ?>
+							<!-- Start  Word -->
+							<div class="client col-md-5">
+								<div class="conatiner-img">
+
+								<img src="layout/images/avater.jpg">
+
+								</div>
+								<div class="client-info">
+								<p class="client-name"><b><?php echo $value['name']; ?></b>
+                                    <span> <?php echo $value['position']?> </span></p>
+								<p class="client-word">
+									<b>CoursesHub</b> <?php echo $value['testimonial']?>	
+								</p>
+								</div>
+							</div>
+							<!-- End  Word -->
+							<?php
+                                    
+                                }
+                            ?>
+					
+						</div>
+					</div>
+                <?php 
+                      }
+                ?>
 					<!-- End Carousel-Item -->
 					  
-							  <!-- Start Carousel-Item -->
-					<div class="carousel-item"  data-interval="2000">
-						<div class="row">
-							<!-- Start  Word -->
-							<div class="client col-md-5">
-								<div class="conatiner-img">
-
-								<img src="assets/images/avater.jpg">
-
-								</div>
-								<div class="client-info">
-								<p class="client-name"><b>Marwa Mohsen</b><span> /  Senior Software Engineer</span></p>
-								<p class="client-word">
-									<b>CoursesHub</b> is a life saver. I don't have the time or money for a college education. My goal is to become a freelance web developer, and thanks to Courses HUB, I'm really close	
-								</p>
-								</div>
-							</div>
-							<!-- End  Word -->
-							
-							<!-- Start  Word -->
-							<div class="client col-md-5">
-								<div class="conatiner-img">
-
-								<img src="assets/images/avater.jpg">
-
-								</div>
-								<div class="client-info">
-								<p class="client-name"><b>Hussien Attia</b><span> / Social Media Specialist</span></p>
-								<p class="client-word">
-									<b>CoursesHub</b> is a life saver. I don't have the time or money for a college education. My goal is to become a freelance web developer, and thanks to Courses HUB, I'm really close	
-								</p>
-								</div>
-							</div>
-							<!-- End  Word -->
-						</div>
-					</div>
-					<!-- End Carousel-Item -->
-					
+					  
+				
 				  </div>
 				  <a class="carousel-control-prev" href="#carouselExampleInterval2" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon  fas fa-angle-left fa-1x" aria-hidden="true"></span>
@@ -769,12 +712,12 @@ $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 					<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
 
 						<ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-6@m">
-							<li><img src="assets/images/slider.png" alt="">li>
-							<li><img src="assets/images/slider1.png" alt=""></li>
-							<li><img src="assets/images/slider2.png" alt=""></li>
-							<li><img src="assets/images/slider3.png" alt=""></li>
-							<li><img src="assets/images/slider4.png" alt=""></li>
-							<li><img src="assets/images/slider5.png" alt=""></li>
+							<li><img src="layout/images/slider.png" alt="">li>
+							<li><img src="layout/images/slider1.png" alt=""></li>
+							<li><img src="layout/images/slider2.png" alt=""></li>
+							<li><img src="layout/images/slider3.png" alt=""></li>
+							<li><img src="layout/images/slider4.png" alt=""></li>
+							<li><img src="layout/images/slider5.png" alt=""></li>
 						</ul>
 						</div>
 						
@@ -832,18 +775,7 @@ $courses = select_rows("SELECT * FROM courses WHERE active = 1");
 			</div>
 		</div>
 	</div>
-	<div class="copy-right col-md-12 text-center">
-      © Copyright 2019. All Rights Reserved for CoursesHub for online services.
-	</div>
-</footer>
-<!-- End footer  -->
-<!-- Jquery-->
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/ajex.js"></script>
+<?php
+include $tpl . 'footer.php';
 
-<!-- BootStrap And Other Js -->
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/uikit-icons.min.js"></script>
-<script src="assets/js/uikit.min.js"></script>
-</body>
-</html>
+?>

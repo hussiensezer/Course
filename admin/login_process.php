@@ -28,6 +28,7 @@ if(!empty($errors)) {
         redirect('adminboard.php');
     }else {
         $_SESSION['error'] = "Wrong Password Please Try Again";
+      // echo password_hash(123456, PASSWORD_DEFAULT);
         redirect('login.php');  
     }
     }else {

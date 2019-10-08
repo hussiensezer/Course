@@ -1,47 +1,51 @@
-<?php
-require 'includes/kernel.php';
+<?php 
+
+$pageTitle = "Login";
+$noNavbar = "";
+include "init.php";
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login Page</title>
-	<style>
-		body {
-			margin: 0;
-			background: #ddd;
-		}
-		* {
-			box-sizing: border-box;
-		}
-		.form-container {
-			padding: 20px;
-			margin: 0 auto;
-			margin-top: 30px;
-			background: #fff;
-			max-width: 500px;
-			box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.3);
-		}
-		input {
-			width: 100%;
-			padding: 5px 10px;
-			margin-bottom: 10px;
-		}
-		input[type="radio"] {
-			width: 50%;
-		}
-	</style>
-</head>
-<body>
 
-	<div class="form-container">
-		<?php view_alerts(); ?>
 
-		<form method="POST" action="login_process.php">
-			<input type="" name="email" placeholder="Email">
-			<input type="password" name="password" placeholder="Password">
-			<input type="submit" name="" value="Login">
-		</form>
-	</div>
 
-</body>
-</html>
+
+
+<div class="form">
+    <div class="container">
+        <div class="row">
+            <div class="group col-md-6">
+                <h3 class='text-center '> Login To</h3>
+                <img src="layout/images/logo.png" class="col-md-6 offset-md-3 mb-2">
+                  <?php
+                        view_alerts();
+                    ?>
+                <form action="login_process.php" method="POST">
+                    <div class="form-group">
+                        <input type="email" class='form-control' name="email" placeholder="Enter Your Email" autocomplete="off" autofocus>
+                        <i class="fas fa-envelope"></i>
+                    </div>  
+                    <div class="form-group">
+                        <input type="password" class='form-control' name="pass" placeholder="Enter Your Password" autocomplete="off">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-md"> Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<?php 
+
+include $tpl . 'footer.php'; 
+?>

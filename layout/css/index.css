@@ -6,6 +6,7 @@ src: url(../webfonts/GothamLight-Regular.otf);
 }
 body {
  font-family: Go;
+ background-color:#EFEFEF;
 	
 }
 
@@ -583,7 +584,8 @@ header .wrapper .content .text .box-right span::after {
 	margin-top:40px;
 }
 .partners .uk-slider-items li img {
-	width:90px;
+	width:50%;
+	border-radius:50%;
 }
 /* End Our Partners */ 
 
@@ -598,6 +600,7 @@ footer h5 {
 	font-size:17px;
 	margin-bottom:25px;
 	margin-left:27px;
+	color:white;
 }
 footer .contact {
 	margin-bottom: 30px;
@@ -790,10 +793,7 @@ t.tools{
     margin-left:1%;
     transition: all .5s ease-in-out
 }
- .active {
-    width:15%;
-  
-}
+
 .full-width {
     width:93%;
     

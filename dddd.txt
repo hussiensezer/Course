@@ -1,0 +1,7 @@
+for($i = 0; $i < ($total /4) ; $i = $i + 4) {
+$data[] = array_slice($testi, $i, true);
+echo $i . "<br>";
+}
+echo "<pre>"; 
+print_r( $data); 
+echo"</pre>";
